@@ -1,7 +1,6 @@
 # abhaykrishn1.github.io
-portfolio
+portfolio `Plan`
 
-`Plan`
 stage_0: 5 switch from user side for Branch
 0.master : deployed 
 1.b_test_main : all feature/git testing releated

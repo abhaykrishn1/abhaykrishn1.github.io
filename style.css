@@ -1,3 +1,20 @@
+/* progress bar fill on top */
+.progress-container {
+  position: fixed; /* Keep the progress bar at the top */
+  top: 0; /* Align it to the top */
+  left: 0; /* Align it to the left */
+  width: 100%; /* Full width */
+  height: 4px; /* Height of the progress bar */
+  background-color: #e0f7fa; /* Light Blue Background */ /* Background color of the container */
+  z-index: 9999; /* Ensure it stays on top of other content */
+}
+
+.progress-bar {
+  height: 100%; /* Full height of the container */
+  width: 2%; /* Start with 4% progress */
+  background-color: #00bcd4; /* Blue Progress Bar */ /* Color of the progress bar */
+  transition: width 0.2s; /* Smooth transition for width changes */
+}
 /* Landing page styles */
 body {
   font-family: Arial, sans-serif;

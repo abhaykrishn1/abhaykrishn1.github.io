@@ -1,21 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<!-- <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Minimalist</title>
   <link rel="stylesheet" href="style.css">
+</head> -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhay Krishna - Minimalist</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --text-color: #333;
+            --light-gray: #ecf0f1;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+        }
+
+        .contact-info a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item, .project-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-header, .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin: 0;
+        }
+
+        .date {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+        }
+
+        .tech-stack {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        li::before {
+            content: "•";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-category {
+            margin-bottom: 1rem;
+        }
+
+        .skill-category h4 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item {
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    
-  </header>
+    <div class="container">
+        <header>
+            <h1>Abhay Krishna</h1>
+            <div class="contact-info">
+                <a href="tel:8765204921">8765204921</a>
+                <a href="mailto:abhaykrishn1@gmail.com">abhaykrishn1@gmail.com</a>
+                <a href="https://linkedin.com/in/abhaykrishn1">LinkedIn</a>
+                <a href="https://github.com/abhaykrishn1">GitHub</a>
+            </div>
+        </header>
 
-  <main id="portfolio-content">
-    <!-- Portfolio content will be loaded here -->
-     <p> Minimalist Content</p>
-  </main>
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3>Jr Data Engineer Trainee</h3>
+                    <span class="date">Mar 2024 – Present</span>
+                </div>
+                <div class="company">64-Squares LLC - SafeRxp.com, Pune</div>
+                <div class="tech-stack">Django, Flask, RabbitMQ, Solr, Docker</div>
+                <ul>
+                    <li>Resolved dependency conflicts in Python 3.6.0 projects through debugging and maintenance.</li>
+                    <li>Developed micro-services using Django and Flask with Ajax for enhanced user experience.</li>
+                    <li>Configured Solr with Zookeeper to provide effective monitoring to searching.</li>
+                    <li>Created a small chatbot feature app integrating ChatGPT and Gemini.</li>
+                    <li>Worked as a Prompt Engineer to train GenAI LLM models.</li>
+                </ul>
+            </div>
 
-  <script src="script.js"></script>
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3>Quality Assurance Tester</h3>
+                    <span class="date">Jan 2023</span>
+                </div>
+                <div class="company">U-Test Freelance - Remote</div>
+                <div class="tech-stack">Beta Testing, Documentation</div>
+                <ul>
+                    <li>Conducted exploratory prompt testing on the beta stage of the Bard AI model (now Gemini).</li>
+                    <li>Utilized Slack for communication and prepared documentation for test cases.</li>
+                    <li>Performed testing focusing on safety, security, and discrimination response monitoring.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="project-item">
+                <div class="project-header">
+                    <h3>GR-MART</h3>
+                    <span class="date">Sept 2023</span>
+                </div>
+                <div class="tech-stack">Spring Boot, React.js, MySQL, AWS ec2</div>
+                <ul>
+                    <li>Developed a web application platform for purchasing grocery items from existing shops.</li>
+                    <li>Utilized Spring Security, Git, Postman, Figma, and draw.io for ER and Use Case diagrams.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Languages</h4>
+                    Python, Java, Node
+                </div>
+                <div class="skill-category">
+                    <h4>Frontend</h4>
+                    React, JavaScript, HTML/CSS
+                </div>
+                <div class="skill-category">
+                    <h4>Cloud</h4>
+                    AWS ec2, s3, lambda service, AWS Glue
+                </div>
+                <div class="skill-category">
+                    <h4>Data</h4>
+                    Snowflake, Power BI
+                </div>
+                <div class="skill-category">
+                    <h4>Databases</h4>
+                    MySQL, MongoDB
+                </div>
+                <div class="skill-category">
+                    <h4>Tools</h4>
+                    Docker, RabbitMQ, Celery, Jira
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="education-item">
+                <div class="experience-header">
+                    <h3>PG-DAC</h3>
+                    <span class="date">Sept 2023</span>
+                </div>
+                <div>CDAC Sunbeam - 63.4%</div>
+            </div>
+            <div class="education-item">
+                <div class="experience-header">
+                    <h3>B.Tech - Civil</h3>
+                    <span class="date">2014-2018</span>
+                </div>
+                <div>APJ Abdul Kalam Technical University - 70%</div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add smooth scrolling to all links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
 </body>
+<script src="script.js"></script>
+</html>
+
 </html>

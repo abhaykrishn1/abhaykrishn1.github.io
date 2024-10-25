@@ -1,4 +1,8 @@
 # abhaykrishn1.github.io
+Change in approach for personal site--> make somthing first then only think of optimizing it.
+Making woring code first then doing modification & and 
+
+
 portfolio `Plan`
 -work in dev branches, Proper PR
 -dark mode set from user's default preference

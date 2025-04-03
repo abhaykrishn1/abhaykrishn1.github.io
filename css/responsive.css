@@ -1,0 +1,82 @@
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    .container {
+        padding: 30px 15px;
+    }
+
+    .section {
+        padding: 20px;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .experience-header,
+    .education-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        line-height: 1.5;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    .theme-switcher {
+        top: 10px;
+        right: 10px;
+        gap: 8px;
+    }
+    
+    .theme-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .theme-icon i {
+        font-size: 1rem;
+    }
+    
+    .color-options {
+        width: 140px;
+    }
+
+    .section {
+        padding: 15px;
+    }
+    
+    .contact-info a {
+        font-size: 0.9rem;
+    }
+
+    .download-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+} 

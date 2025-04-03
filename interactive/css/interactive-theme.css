@@ -1,0 +1,99 @@
+/* Interactive Theme Specific Styles */
+
+/* Override base themes */
+body.theme-default {
+    /* Modern & Engaging Palette */
+    --primary-color: #343a40; /* Darker Gray */
+    --secondary-color: #007bff; /* Vibrant Blue */
+    --background-color: #ffffff; /* White */
+    --text-color: #212529;       /* Near Black */
+    --accent-color: #ffc107;    /* Amber/Yellow */
+    --section-bg-color: #f8f9fa; /* Very Light Gray */
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --link-hover-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Interactive Name Placeholder Style */
+#interactive-name-placeholder {
+    font-size: 3.2rem; /* Slightly larger */
+    font-weight: 700; /* Bolder */
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
+    border-bottom: 3px solid transparent; /* Add underline potential */
+}
+
+#interactive-name-placeholder:hover {
+    transform: scale(1.03) translateY(-2px); /* Subtle lift */
+    color: var(--secondary-color);
+    border-bottom-color: var(--accent-color);
+}
+
+/* General Interactive Adjustments */
+.section {
+    border-left: 6px solid; /* Thicker border */
+    border-image: linear-gradient(to bottom, var(--secondary-color), var(--accent-color)) 1; /* Gradient border */
+    padding-left: 40px;
+    transition: background-color 0.3s ease;
+}
+
+.section:hover {
+    background-color: #f1f3f5; /* Slight background change on hover */
+}
+
+/* More interactive links */
+a {
+    position: relative;
+    text-decoration: none;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 2px;
+    right: 0;
+    background: var(--link-hover-color);
+    transition: width .3s ease;
+    -webkit-transition: width .3s ease;
+}
+
+a:hover::after {
+    width: 100%;
+    left: 0;
+    background-color: var(--link-hover-color);
+}
+
+.project-item, .experience-item, .skill-category, .education-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-item:hover, .experience-item:hover, .skill-category:hover, .education-item:hover {
+    transform: scale(1.02); /* Scale up slightly */
+    box-shadow: 0 10px 20px var(--shadow-color);
+}
+
+.download-btn {
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.download-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 6px 12px var(--shadow-color);
+}
+
+.theme-icon.active-theme {
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 10px var(--secondary-color);
+    border-color: white;
+}
+
+/* Hide color options */
+#minimalist-icon .color-options {
+    display: none !important;
+} 

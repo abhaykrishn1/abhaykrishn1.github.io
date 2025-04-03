@@ -1,148 +1,48 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhay Krishna - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body class="theme-default">
-    
-    <div class="scroll-progress-container">
-        <div class="scroll-progress-bar"></div>
-    </div>
-
-    <div class="theme-switcher">
-        <div class="theme-icon" id="minimalist-icon">
-            <i class="fas fa-minus-circle"></i>
-            <div class="color-options">
-                <button class="color-btn ocean" onclick="setColorTheme('ocean')">Ocean</button>
-                <button class="color-btn forest" onclick="setColorTheme('forest')">Forest</button>
-                <button class="color-btn sunset" onclick="setColorTheme('sunset')">Sunset</button>
-                <button class="color-btn lavender" onclick="setColorTheme('lavender')">Lavender</button>
-                <button class="color-btn midnight" onclick="setColorTheme('midnight')">Midnight</button>
-            </div>
-        </div>
-        
-        <div class="theme-card visual" onclick="window.location.href='https://github.com/abhaykrishn1/visual-portfolio'">
-            <i class="fas fa-eye"></i>
-            <div class="preview">Visual Theme</div>
-        </div>
-        
-        <div class="theme-card creative" onclick="window.location.href='https://github.com/abhaykrishn1/creative-portfolio'">
-            <i class="fas fa-paint-brush"></i>
-            <div class="preview">Creative Theme</div>
-        </div>
-    </div>
-
-    <div class="container">
-        <header>
-            <h1>Abhay Krishna</h1>
-            <div class="certification-badges">
-                <div class="certification-badge">
-                    <i class="fas fa-certificate"></i>
-                    <span>SnowPro Core Certified Data Engineer</span>
-                </div>
-            </div>
-            <div class="contact-info">
-                <a href="tel:8765204921"><i class="fas fa-phone"></i> 8765204921</a>
-                <a href="mailto:abhaykrishn1@gmail.com"><i class="fas fa-envelope"></i> abhaykrishn1@gmail.com</a>
-                <a href="https://linkedin.com/in/abhaykrishn1"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                <a href="https://github.com/abhaykrishn1"><i class="fab fa-github"></i> GitHub</a>
-            </div>
-        </header>
-
-        <section id="experience" class="animated-section">
-            <h2><i class="fas fa-briefcase"></i> Experience</h2>
-            <div class="experience-item">
-                <div class="experience-header">
-                    <h3>Jr Data Engineer Trainee</h3>
-                    <span class="date">Mar 2024 – Present</span>
-                </div>
-                <div class="company">
-                    <i class="fas fa-building"></i> 64-Squares LLC - SafeRxp.com, Pune
-                </div>
-                <div class="tech-stack">
-                    <i class="fas fa-tools"></i> Django, Flask, RabbitMQ, Solr, Docker
-                </div>
-                <ul class="achievement-list">
-                    <li>Resolved dependency conflicts in Python 3.6.0 projects through debugging and maintenance.</li>
-                    <li>Developed micro-services using Django and Flask with Ajax for enhanced user experience.</li>
-                    <li>Configured Solr with Zookeeper to provide effective monitoring to searching.</li>
-                    <li>Set up the latest Ubuntu 24.04 for local development environments using Dockerfile builds.</li>
-                    <li>Created a small chatbot feature app integrating ChatGPT and Gemini.</li>
-                    <li>Worked as a Prompt Engineer to train GenAI LLM models.</li>
-                    <li>Delivered a presentation on Agile methodologies.</li>
-                </ul>
-            </div>
-            
-        </section>
-
-        <section id="skills" class="animated-section">
-            <h2><i class="fas fa-code"></i> Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Languages</h3>
-                    <div class="skill-bars">
-                        <div class="skill-bar">
-                            <span class="skill-name">Python</span>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <span class="skill-name">Java</span>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 75%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <span class="skill-name">Node</span>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 65%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </div>
-    <script src="script.js"></script>
-</body>
-</html> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhay Krishna - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Abhay Krishna - AI Engineer Portfolio</title>
+    <meta name="description" content="Portfolio of Abhay Krishna, an AI Engineer specializing in multi-agent systems, ETL pipelines, and chatbot development using LangChain, FastAPI, Snowflake, and cloud technologies.">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Core Styles -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body class="theme-default">
+    
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="scrollProgress"></div>
+    </div>
+
     <div class="theme-switcher">
-        <div class="theme-icon" id="minimalist-icon">
+        <div class="theme-icon" id="minimalist-icon" aria-haspopup="true" aria-expanded="false" aria-label="Toggle theme color options">
             <i class="fas fa-minus-circle"></i>
-            <div class="color-options">
-                <button class="color-btn ocean" onclick="setColorTheme('ocean')">Ocean</button>
-                <button class="color-btn forest" onclick="setColorTheme('forest')">Forest</button>
-                <button class="color-btn sunset" onclick="setColorTheme('sunset')">Sunset</button>
-                <button class="color-btn lavender" onclick="setColorTheme('lavender')">Lavender</button>
-                <button class="color-btn midnight" onclick="setColorTheme('midnight')">Midnight</button>
+            <div class="color-options" role="menu" aria-hidden="true">
+                <button class="color-option" data-theme="ocean" role="menuitem">Ocean</button>
+                <button class="color-option" data-theme="forest" role="menuitem">Forest</button>
+                <button class="color-option" data-theme="sunset" role="menuitem">Sunset</button>
+                <button class="color-option" data-theme="lavender" role="menuitem">Lavender</button>
+                <button class="color-option" data-theme="midnight" role="menuitem">Midnight</button>
             </div>
         </div>
-        <a href="https://github.com/yourusername/visual-portfolio" class="theme-icon" target="_blank">
+        
+        <a href="visual/" class="theme-icon" target="_blank" title="Visual Theme">
             <i class="fas fa-eye"></i>
         </a>
-        <a href="https://github.com/yourusername/interactive-portfolio" class="theme-icon" target="_blank">
+        <a href="interactive/" class="theme-icon" target="_blank" title="Interactive Theme">
             <i class="fas fa-hand-pointer"></i>
         </a>
-        <a href="https://github.com/yourusername/creative-portfolio" class="theme-icon" target="_blank">
+        <a href="creative/" class="theme-icon" target="_blank" title="Creative Theme">
             <i class="fas fa-paint-brush"></i>
         </a>
-        <a href="https://github.com/yourusername/arcade-portfolio" class="theme-icon" target="_blank">
+        <a href="arcade/" class="theme-icon" target="_blank" title="Arcade Theme">
             <i class="fas fa-gamepad"></i>
         </a>
     </div>
@@ -150,136 +50,170 @@
     <div class="container">
         <header>
             <h1>Abhay Krishna</h1>
-            <div class="certification-badge">
-                <i class="fas fa-certificate"></i>
-                <span>SnowPro Core Certified Data Engineer</span>
-            </div>
+            <h2>AI Engineer</h2>
             <div class="contact-info">
                 <a href="tel:8765204921"><i class="fas fa-phone"></i> 8765204921</a>
                 <a href="mailto:abhaykrishn1@gmail.com"><i class="fas fa-envelope"></i> abhaykrishn1@gmail.com</a>
-                <a href="https://linkedin.com/in/abhaykrishn1"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                <a href="https://github.com/abhaykrishn1"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://linkedin.com/in/abhaykrishn1" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/abhaykrishn1" target="_blank"><i class="fab fa-github"></i> GitHub</a>
             </div>
         </header>
 
-        <section id="experience">
-            <h2><i class="fas fa-briefcase"></i> Experience</h2>
+        <section id="summary" class="section">
+            <h2><i class="fas fa-user-tie"></i> Professional Summary</h2>
+            <p>Innovative AI Engineer with a proven track record of designing and deploying advanced AI systems. Adept at building multi-agent systems, developing robust ETL pipelines, and implementing state-of-the-art chatbots using cutting-edge technologies. Known for driving operational efficiency and delivering cost savings while ensuring seamless integration and data integrity. Demonstrated expertise in FastAPI, Snowflake, MongoDB, and cloud platforms with a focus on scalable, secure, and user-friendly solutions.</p>
+        </section>
+
+        <section id="competencies" class="section">
+             <h2><i class="fas fa-star"></i> Core Competencies</h2>
+             <ul class="competency-list">
+                 <li><i class="fas fa-brain"></i> AI & Machine Learning: LangChain, OpenAI, Gemini, CortexAI, Deepgram</li>
+                 <li><i class="fas fa-server"></i> Backend & API Development: FastAPI, Django, Flask, Spring Boot</li>
+                 <li><i class="fas fa-database"></i> Database & Data Engineering: Snowflake, MongoDB, Vector Databases, MySQL</li>
+                 <li><i class="fas fa-exchange-alt"></i> ETL & Data Integration: API integrations, data transformation, AWS S3</li>
+                 <li><i class="fab fa-docker"></i> DevOps & Containerization: Docker, RabbitMQ, Linux (Ubuntu 24.04)</li>
+                 <li><i class="fas fa-users"></i> Collaboration & Agile Methodologies: Git, Agile/Scrum, documentation, presentations</li>
+             </ul>
+        </section>
+
+        <section id="experience" class="section">
+            <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
             <div class="experience-item">
                 <div class="experience-header">
-                    <h3>Jr Data Engineer Trainee</h3>
-                    <span class="date">Mar 2024 – Present</span>
+                    <h3>AI Engineer</h3>
+                    <span class="date">April 2024 – Present</span>
                 </div>
                 <div class="company">
-                    <i class="fas fa-building"></i> 64-Squares LLC - SafeRxp.com, Pune
-                </div>
-                <div class="tech-stack">
-                    <i class="fas fa-tools"></i> Django, Flask, RabbitMQ, Solr, Docker
+                    <i class="fas fa-building"></i> 64-Squares LLC, Pune
                 </div>
                 <ul>
-                    <li>Resolved dependency conflicts in Python 3.6.0 projects through debugging and maintenance.</li>
-                    <li>Developed micro-services using Django and Flask with Ajax for enhanced user experience.</li>
-                    <li>Configured Solr with Zookeeper to provide effective monitoring to searching.</li>
-                    <li>Set up the latest Ubuntu 24.04 for local development environments using Dockerfile builds.</li>
-                    <li>Created a small chatbot feature app integrating ChatGPT and Gemini.</li>
-                    <li>Worked as a Prompt Engineer to train GenAI LLM models.</li>
-                    <li>Delivered a presentation on Agile methodologies.</li>
+                    <li>Engineered a multi-AI agent system for a sales team, enabling automated, persuasive car pitch emails.</li>
+                    <li>Developed a FastAPI-based service using LangChain and Snowflake, reducing data processing time by 35% and saving 20% in operational costs.</li>
+                    <li>Designed and executed an ETL pipeline extracting data from external APIs into Snowflake, reducing manual intervention by 40%.</li>
+                    <li>Integrated third-party APIs (OpenAI, Gemini, CortexAI) to build a RAG chatbot, enhancing customer engagement by 25%.</li>
+                    <li>Implemented a voice assistant using Deepgram, improving accessibility and user experience.</li>
                 </ul>
             </div>
-
             <div class="experience-item">
                 <div class="experience-header">
+                    <h3>Software Engineer</h3>
+                    <span class="date">Dates TBC</span>
+                </div>
+                <div class="company">
+                    <i class="fas fa-building"></i> SafeRxp.com (Associated with 64-Squares LLC)
+                </div>
+                 <ul>
+                    <li>Resolved dependency conflicts in Python 3.6 projects, reducing troubleshooting time by 50%.</li>
+                    <li>Configured and maintained Ubuntu 24.04 local dev environments via Docker.</li>
+                    <li>Delivered technical presentations on Agile methodologies, enhancing team collaboration.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3>Assistant System Administrator</h3>
+                    <span class="date">Dec 2020 – Feb 2022</span>
+                </div>
+                <div class="company">
+                    <i class="fas fa-building"></i> Surya Informatics Solutions Pvt Ltd, Noida
+                </div>
+                <ul>
+                    <li>Configured Linux servers (CentOS, Ubuntu) for dev/deployment.</li>
+                    <li>Managed MySQL databases and performed regular backups.</li>
+                    <li>Implemented CI/CD pipelines using Jenkins.</li>
+                    <li>Containerized applications using Docker.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                 <div class="experience-header">
                     <h3>Quality Assurance Tester</h3>
-                    <span class="date">Jan 2023</span>
+                    <span class="date">Jan 2023 (Remote)</span>
                 </div>
                 <div class="company">
-                    <i class="fas fa-laptop-house"></i> U-Test Freelance - Remote
-                </div>
-                <div class="tech-stack">
-                    <i class="fas fa-tools"></i> Beta Testing, Documentation
+                    <i class="fas fa-laptop-house"></i> U-Test Freelance
                 </div>
                 <ul>
-                    <li>Conducted exploratory prompt testing on the beta stage of the Bard AI model (now Gemini).</li>
-                    <li>Utilized Slack for communication and prepared documentation for test cases.</li>
-                    <li>Performed testing focusing on safety, security, and discrimination response monitoring.</li>
+                    <li>Conducted exploratory prompt testing for Bard AI (now Gemini), ensuring safety, security, and fairness.</li>
+                    <li>Documented testing procedures and results to inform iterative improvements.</li>
                 </ul>
             </div>
         </section>
 
-        <section id="projects">
-            <h2><i class="fas fa-project-diagram"></i> Projects</h2>
+        <section id="projects" class="section">
+            <h2><i class="fas fa-project-diagram"></i> Project Highlights</h2>
             <div class="project-item">
-                <div class="project-header">
-                    <h3>GR-MART</h3>
-                    <span class="date">Sept 2023</span>
-                </div>
-                <div class="project-details">
-                    <div class="tech-stack">
-                        <i class="fas fa-code"></i> Spring Boot, React.js, MySQL, AWS ec2
-                    </div>
-                    <ul>
-                        <li>Developed a web application platform for purchasing grocery items from existing shops.</li>
-                        <li>Utilized Spring Security, Git, Postman, Figma, and draw.io for ER and Use Case diagrams.</li>
-                    </ul>
-                </div>
+                <h3>GR-MART (CDAC & Sunbeam Karad)</h3>
+                <div class="project-tech">Full Stack Developer | Sept 2023 | Spring Boot, React.js, MySQL, AWS EC2</div>
+                <ul>
+                    <li>Spearheaded development of a secure web app for grocery purchases, boosting user engagement by 30%.</li>
+                    <li>Utilized Spring Security, Git, Postman, Figma, and draw.io.</li>
+                </ul>
             </div>
         </section>
 
-        <section id="skills">
-            <h2><i class="fas fa-code"></i> Technical Skills</h2>
+         <section id="certifications" class="section">
+            <h2><i class="fas fa-certificate"></i> Certifications</h2>
+            <ul>
+                <li>SnowPro Core Data Engineer – Snowflake (Sept 2024)</li>
+                <li>Building GenAI Applications with MongoDB – MongoDB Badge</li>
+                <li>Introduction to LangGraph – LangChain Academy</li>
+            </ul>
+        </section>
+
+        <section id="skills" class="section">
+            <h2><i class="fas fa-laptop-code"></i> Technical Skills</h2>
             <div class="skills-grid">
                 <div class="skill-category">
-                    <h3>Languages</h3>
-                    <p>Python, Java, Node</p>
+                    <h3>Programming Languages</h3>
+                    <p>Python, Java, JavaScript</p>
                 </div>
                 <div class="skill-category">
-                    <h3>Frontend</h3>
-                    <p>React, JavaScript, HTML/CSS</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Cloud</h3>
-                    <p>AWS ec2, s3, lambda service, AWS Glue</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Data & Analytics</h3>
-                    <p>Snowflake, Power BI</p>
+                    <h3>Frameworks & Tools</h3>
+                    <p>FastAPI, Django, Flask, Spring Boot, React.js, Docker, LangChain, Git, RabbitMQ</p>
                 </div>
                 <div class="skill-category">
                     <h3>Databases</h3>
-                    <p>MySQL, MongoDB</p>
+                    <p>Snowflake, MongoDB, MySQL, Vector Databases</p>
                 </div>
                 <div class="skill-category">
-                    <h3>Tools</h3>
-                    <p>Docker, RabbitMQ, Celery, Jira, Git</p>
+                    <h3>Platforms & Cloud</h3>
+                    <p>AWS (S3), Ubuntu</p>
+                </div>
+                 <div class="skill-category">
+                    <h3>Other Skills</h3>
+                    <p>API Integration, ETL Pipeline Design, Agile Methodologies, Technical Documentation, RAG Chatbots, Multi-Agent Systems</p>
                 </div>
             </div>
         </section>
 
-        <section id="education">
+        <section id="education" class="section">
             <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-            <div class="education-grid">
-                <div class="education-item">
-                    <h3>PG-DAC</h3>
-                    <div>CDAC Sunbeam (63.4%)</div>
-                    <div class="date">Sept 2023</div>
+            <div class="education-item">
+                 <div class="education-header">
+                    <h3>Bachelor of Technology - Electronics & Communication</h3>
+                    <span class="date">2017 - 2021</span>
                 </div>
-                <div class="education-item">
-                    <h3>B.Tech - Civil</h3>
-                    <div>APJ Abdul Kalam Technical University (70%)</div>
-                    <div class="date">2014-2018</div>
-                </div>
-                <div class="education-item">
-                    <h3>Intermediate</h3>
-                    <div>Jawahar Navodaya Vidyalaya (83.4%)</div>
-                    <div class="date">2013</div>
-                </div>
-                <div class="education-item">
-                    <h3>High School</h3>
-                    <div>JNVSN Uttar Pradesh (9 CGPA)</div>
-                    <div class="date">2011</div>
+                <div class="institution">
+                    <i class="fas fa-university"></i> AKTU University, Lucknow
                 </div>
             </div>
         </section>
+
+        <section id="resume" class="section">
+            <h2><i class="fas fa-file-alt"></i> Resume</h2>
+            <div class="resume-download">
+                <a href="Abhay_Krishna_resume_AI_Engineer_feb_14.pdf" target="_blank" class="download-btn">
+                    <i class="fas fa-download"></i> Download Latest Resume
+                </a>
+            </div>
+        </section>
     </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Abhay Krishna. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

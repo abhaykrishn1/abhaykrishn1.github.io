@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #0a0a0a;
+      overflow: hidden;
+      perspective: 1500px;
+      cursor: none;
+    }
+
+    .scene {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      transform-style: preserve-3d;
+    }
+
+    .text-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      display: flex;
+      gap: 20px;
+      white-space: nowrap;
+    }
+
+    .letter {
+      display: inline-block;
+      font-family: 'Arial Black', sans-serif;
+      font-size: 80px; /* Reduced size to fit horizontally */
+      font-weight: bold;
+      color: transparent;
+      position: relative;
+      margin: 0 5px;
+      opacity: 0;
+      animation: fadeIn 0.5s forwards;
+    }
+
+    .space {
+      width: 40px;
+      display: inline-block;
+    }
+
+    .letter-outline {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      -webkit-text-stroke: 2px var(--glow-color, #0ff);
+      color: transparent;
+      transition: all 0.3s ease;
+      text-shadow: 
+        0 0 10px var(--glow-color, #0ff),
+        0 0 20px var(--glow-color, #0ff);
+      opacity: 0;
+    }
+
+    .letter-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      color: var(--glow-color, #0ff);
+      clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+      transition: all 0.3s ease;
+      text-shadow: 
+        0 0 10px var(--glow-color, #0ff),
+        0 0 20px var(--glow-color, #0ff),
+        0 0 30px var(--glow-color, #0ff);
+      opacity: 0;
+    }
+
+    .letter.active .letter-fill {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      z-index: 9999;
+      transition: transform 0.1s ease;
+    }
+
+    .cursor-inner {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: var(--glow-color, #0ff);
+      border-radius: 50%;
+      filter: blur(5px);
+    }
+
+    .cursor-outer {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      background: radial-gradient(circle, var(--glow-color, #0ff) 0%, rgba(0,0,0,0) 70%);
+      opacity: 0.5;
+    }
+
+    .shape-3d {
+      position: absolute;
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease;
+    }
+
+    .cube-3d {
+      width: 100px;
+      height: 100px;
+      transform-style: preserve-3d;
+      animation: float 10s infinite ease-in-out;
+    }
+
+    .cube-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 2px solid rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .cube-face.active {
+      border-color: var(--glow-color, #0ff);
+      box-shadow: 0 0 15px var(--glow-color, #0ff);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotateX(0) rotateY(0); }
+      25% { transform: translateY(-20px) rotateX(20deg) rotateY(20deg); }
+      50% { transform: translateY(0) rotateX(40deg) rotateY(40deg); }
+      75% { transform: translateY(20px) rotateX(20deg) rotateY(60deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div class="text-container">
+      <span class="letter" data-letter="A" style="animation-delay: 0s"><span class="letter-outline">A</span><span class="letter-fill">A</span></span>
+      <span class="letter" data-letter="B" style="animation-delay: 0.1s"><span class="letter-outline">B</span><span class="letter-fill">B</span></span>
+      <span class="letter" data-letter="H" style="animation-delay: 0.2s"><span class="letter-outline">H</span><span class="letter-fill">H</span></span>
+      <span class="letter" data-letter="A" style="animation-delay: 0.3s"><span class="letter-outline">A</span><span class="letter-fill">A</span></span>
+      <span class="letter" data-letter="Y" style="animation-delay: 0.4s"><span class="letter-outline">Y</span><span class="letter-fill">Y</span></span>
+      <span class="space"></span>
+      <span class="letter" data-letter="K" style="animation-delay: 0.5s"><span class="letter-outline">K</span><span class="letter-fill">K</span></span>
+      <span class="letter" data-letter="R" style="animation-delay: 0.6s"><span class="letter-outline">R</span><span class="letter-fill">R</span></span>
+      <span class="letter" data-letter="I" style="animation-delay: 0.7s"><span class="letter-outline">I</span><span class="letter-fill">I</span></span>
+      <span class="letter" data-letter="S" style="animation-delay: 0.8s"><span class="letter-outline">S</span><span class="letter-fill">S</span></span>
+      <span class="letter" data-letter="H" style="animation-delay: 0.9s"><span class="letter-outline">H</span><span class="letter-fill">H</span></span>
+      <span class="letter" data-letter="N" style="animation-delay: 1.0s"><span class="letter-outline">N</span><span class="letter-fill">N</span></span>
+      <span class="letter" data-letter="A" style="animation-delay: 1.1s"><span class="letter-outline">A</span><span class="letter-fill">A</span></span>
+    </div>
+    <div class="cursor">
+      <div class="cursor-inner"></div>
+      <div class="cursor-outer"></div>
+    </div>
+  </div>
+
+  <script>
+    const scene = document.querySelector('.scene');
+    const letters = document.querySelectorAll('.letter');
+    const cursor = document.querySelector('.cursor');
+    const shapes = [];
+
+    const colors = [
+      '#0ff',  // cyan
+      '#f0f',  // magenta
+      '#ff0',  // yellow
+      '#0f0',  // green
+      '#f70',  // orange
+    ];
+    let currentColorIndex = 0;
+
+    // Initial flowing animation
+    letters.forEach((letter, index) => {
+      const outline = letter.querySelector('.letter-outline');
+      const fill = letter.querySelector('.letter-fill');
+      
+      setTimeout(() => {
+        outline.style.opacity = '1';
+      }, index * 100);
+      
+      // Keep fill hidden initially
+      fill.style.opacity = '0';
+    });
+
+    function create3DCube(x, y, size, rotationDelay) {
+      const cube = document.createElement('div');
+      cube.className = 'shape-3d';
+      cube.style.left = x + 'px';
+      cube.style.top = y + 'px';
+
+      const cubeInner = document.createElement('div');
+      cubeInner.className = 'cube-3d';
+      cubeInner.style.width = size + 'px';
+      cubeInner.style.height = size + 'px';
+      cubeInner.style.animationDelay = `-${rotationDelay}s`;
+
+      const transforms = [
+        'translateZ(' + (size/2) + 'px)',
+        'translateZ(' + (-size/2) + 'px)',
+        'rotateY(90deg) translateZ(' + (size/2) + 'px)',
+        'rotateY(-90deg) translateZ(' + (size/2) + 'px)',
+        'rotateX(90deg) translateZ(' + (size/2) + 'px)',
+        'rotateX(-90deg) translateZ(' + (size/2) + 'px)'
+      ];
+
+      transforms.forEach(transform => {
+        const face = document.createElement('div');
+        face.className = 'cube-face';
+        face.style.transform = transform;
+        cubeInner.appendChild(face);
+      });
+
+      cube.appendChild(cubeInner);
+      scene.appendChild(cube);
+      shapes.push(cube);
+    }
+
+    for (let i = 0; i < 15; i++) {
+      const size = Math.random() * 60 + 40;
+      const x = Math.random() * (window.innerWidth - size);
+      const y = Math.random() * (window.innerHeight - size);
+      const delay = Math.random() * 10;
+      create3DCube(x, y, size, delay);
+    }
+
+    let mouseX = 0, mouseY = 0;
+    let currentX = 0, currentY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      if (Math.random() < 0.05) {
+        currentColorIndex = (currentColorIndex + 1) % colors.length;
+        document.documentElement.style.setProperty('--glow-color', colors[currentColorIndex]);
+      }
+
+      letters.forEach(letter => {
+        const rect = letter.getBoundingClientRect();
+        const distance = Math.hypot(
+          mouseX - (rect.left + rect.width/2),
+          mouseY - (rect.top + rect.height/2)
+        );
+        
+        if (distance < 100) {
+          letter.classList.add('active');
+          letter.querySelector('.letter-fill').style.opacity = '1';
+        } else {
+          letter.classList.remove('active');
+          letter.querySelector('.letter-fill').style.opacity = '0';
+        }
+      });
+
+      shapes.forEach(shape => {
+        const rect = shape.getBoundingClientRect();
+        const distance = Math.hypot(
+          mouseX - (rect.left + rect.width/2),
+          mouseY - (rect.top + rect.height/2)
+        );
+        
+        const faces = shape.querySelectorAll('.cube-face');
+        faces.forEach(face => {
+          face.classList.toggle('active', distance < 150);
+        });
+
+        if (distance < 200) {
+          const angle = Math.atan2(
+            mouseY - (rect.top + rect.height/2),
+            mouseX - (rect.left + rect.width/2)
+          );
+          const force = (1 - distance/200) * 15;
+          shape.style.transform = `translate(${Math.cos(angle) * -force}px, ${Math.sin(angle) * -force}px)`;
+        } else {
+          shape.style.transform = '';
+        }
+      });
+    });
+
+    function updateCursor() {
+      currentX += (mouseX - currentX) * 0.1;
+      currentY += (mouseY - currentY) * 0.1;
+      
+      cursor.style.transform = `translate(${currentX - 10}px, ${currentY - 10}px)`;
+      requestAnimationFrame(updateCursor);
+    }
+    updateCursor();
+  </script>
+</body>
+</html>

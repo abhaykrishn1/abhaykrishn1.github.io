@@ -1,0 +1,66 @@
+/* Visual Theme Specific Styles */
+
+/* Override base themes */
+body.theme-default {
+    /* Nature-inspired Palette */
+    --primary-color: #2d5a2a; /* Forest Green */
+    --secondary-color: #8fbc8f; /* Dark Sea Green */
+    --background-color: #f5f5f5; /* Off-white */
+    --text-color: #333333;       /* Dark Gray */
+    --accent-color: #a0522d;    /* Sienna Brown */
+    --section-bg-color: #ffffff; /* White */
+    --shadow-color: rgba(45, 90, 42, 0.15); /* Subtle Green Shadow */
+}
+
+/* Add specific visual theme adjustments */
+h1, h2, h3 {
+    font-family: 'Georgia', serif; /* More elegant font */
+}
+
+.section {
+    border-radius: 15px; /* More rounded corners */
+    border: 1px solid var(--shadow-color);
+}
+
+.theme-icon.active-theme {
+    background-color: var(--accent-color);
+    box-shadow: 0 0 10px var(--accent-color);
+    border-color: white;
+}
+
+/* Hide the color options dropdown for non-minimalist themes */
+#minimalist-icon .color-options {
+    display: none !important;
+}
+
+/* Basic Parallax Effect */
+.parallax-bg {
+    height: 50vh; /* Increased height */
+    /* !!! IMPORTANT: Add your background image URL here !!! */
+    /* background-image: url('path/to/your/mountain-image.jpg'); */ 
+    background-color: var(--secondary-color); /* Fallback color */
+    background-attachment: fixed; /* Creates the parallax effect */
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative; /* Needed if adding content on top later */
+    z-index: -1;
+    /* Removed margin-bottom to let content flow naturally */
+}
+
+/* Adjust container position relative to parallax */
+.container {
+    position: relative; /* Ensure container stays above parallax */
+    z-index: 1;
+    background-color: var(--background-color); /* Give container background to hide parallax scrolling behind it */
+    padding-top: 40px; /* Reset padding adjusted earlier */
+}
+
+/* Adjust header styling for parallax */
+header {
+     padding-top: 40px; /* Reduced padding as it's inside container now */
+     margin-bottom: 20px;
+     text-align: center;
+     /* Optional: Add background/blur if text is hard to read over parallax */
+     /* background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(5px); padding: 20px; border-radius: 10px; */
+} 

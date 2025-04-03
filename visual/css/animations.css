@@ -1,0 +1,19 @@
+/* Visual Theme Animation Styles */
+
+.section {
+    opacity: 0;
+    transform: translateX(-50px); /* Start off-screen to the left */
+    transition: opacity 0.6s ease-out, transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1); /* Smoother, more dynamic easing */
+}
+
+.section.fade-in {
+    opacity: 1;
+    transform: translateX(0); /* Slide in to original position */
+}
+
+/* Optional: Stagger animation for list items or grid items */
+.experience-item,
+.project-item,
+.skill-category {
+    transition-delay: 0.1s; /* Add slight delay for staggered effect if desired */
+} 

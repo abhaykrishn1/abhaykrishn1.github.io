@@ -1,0 +1,116 @@
+/* Theme Definitions */
+
+:root, .theme-ocean {
+    /* Ocean Theme (Default) */
+    --primary-color: #2c3e50; /* Dark Blue-Gray */
+    --secondary-color: #3498db; /* Bright Blue */
+    --background-color: #ecf0f1; /* Light Gray */
+    --text-color: #2c3e50;       /* Dark Blue-Gray */
+    --accent-color: #1abc9c;    /* Teal */
+    --section-bg-color: white;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+.theme-forest {
+    --primary-color: #2c4a2c; /* Dark Green */
+    --secondary-color: #4a8c4a; /* Medium Green */
+    --background-color: #f0f7f0; /* Very Light Green */
+    --text-color: #2c4a2c;       /* Dark Green */
+    --accent-color: #6ab04c;    /* Bright Green */
+    --section-bg-color: white;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+.theme-sunset {
+    --primary-color: #c0392b; /* Dark Red */
+    --secondary-color: #e74c3c; /* Bright Red */
+    --background-color: #fff5f5; /* Very Light Red/Pink */
+    --text-color: #2c3e50;       /* Dark Blue-Gray */
+    --accent-color: #f39c12;    /* Orange */
+    --section-bg-color: white;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+.theme-lavender {
+    --primary-color: #8e44ad; /* Dark Purple */
+    --secondary-color: #9b59b6; /* Medium Purple */
+    --background-color: #f5f0f7; /* Very Light Purple */
+    --text-color: #2c3e50;       /* Dark Blue-Gray */
+    --accent-color: #d35400;    /* Dark Orange/Brown */
+    --section-bg-color: white;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+.theme-midnight {
+    --primary-color: #bdc3c7; /* Light Gray */
+    --secondary-color: #3498db; /* Bright Blue */
+    --background-color: #1a1a1a; /* Very Dark Gray */
+    --text-color: #ecf0f1;       /* Light Gray */
+    --accent-color: #3498db;    /* Bright Blue */
+    --section-bg-color: #2c3e50; /* Dark Blue-Gray */
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Apply theme colors */
+body {
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+h1, h2, h3, .company, .tech-stack, .project-item h3, .skill-category h3, .institution, .project-links a, .contact-info a {
+    color: var(--primary-color);
+}
+
+.date, .project-tech {
+    color: var(--secondary-color);
+}
+
+.certification-badge, .scroll-progress-bar, .progress, .download-btn {
+    background-color: var(--accent-color);
+}
+
+.theme-icon {
+    background: var(--primary-color);
+    color: white;
+}
+
+.color-options {
+    background: var(--section-bg-color);
+    box-shadow: 0 4px 6px var(--shadow-color);
+    /* Ensure text color contrasts with section background */
+    color: var(--text-color); 
+}
+
+.color-option:hover {
+    background: var(--background-color);
+}
+
+.section {
+    background: var(--section-bg-color);
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.experience-item, .project-item {
+    border-bottom-color: var(--shadow-color); /* Use shadow color for subtle border */
+}
+
+.progress-bar {
+    background-color: var(--shadow-color); /* Use shadow color for progress bar background */
+}
+
+.download-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+footer {
+    background-color: var(--primary-color);
+    color: #ecf0f1; /* Ensure footer text is light */
+}
+
+/* Ensure midnight theme links are readable */
+.theme-midnight a {
+    color: var(--secondary-color);
+}
+.theme-midnight a:hover {
+    color: var(--accent-color);
+} 

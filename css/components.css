@@ -1,0 +1,257 @@
+/* Component Styles */
+
+/* Scroll Progress Bar */
+.scroll-progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px; /* Slightly thicker */
+    background: transparent; /* Make container transparent */
+    z-index: 1000;
+}
+
+.scroll-progress-bar {
+    height: 100%;
+    width: 0;
+    transition: width 0.1s linear; /* Smoother transition */
+    border-radius: 0 2px 2px 0; /* Rounded edge */
+}
+
+/* Theme Switcher */
+.theme-switcher {
+    position: fixed;
+    top: 15px; /* Adjusted position */
+    right: 15px;
+    display: flex;
+    gap: 12px; /* Slightly increased gap */
+    z-index: 1001; /* Ensure it's above progress bar */
+}
+
+.theme-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+}
+
+.theme-icon:hover {
+    transform: scale(1.15); /* Slightly larger hover effect */
+    box-shadow: 0 5px 10px var(--shadow-color);
+}
+
+.theme-icon i {
+    font-size: 1.1rem;
+}
+
+/* Color Options Popup */
+.color-options {
+    position: absolute;
+    top: 110%; /* Position below the icon */
+    right: 0;
+    border-radius: 8px;
+    padding: 10px;
+    display: none;
+    width: 160px; /* Slightly wider */
+    margin-top: 5px; /* Small gap */
+    z-index: 1002;
+}
+
+.color-options[aria-hidden="false"] {
+    display: block; /* Show when not hidden */
+}
+
+.color-option {
+    padding: 10px 12px; /* Increased padding */
+    transition: background 0.2s ease;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: inherit; /* Inherit text color from parent */
+}
+
+/* Header Components */
+.certification-badge {
+    display: inline-block;
+    color: white;
+    padding: 8px 18px; /* Adjusted padding */
+    border-radius: 20px;
+    margin: 15px 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.contact-info {
+    display: flex;
+    gap: 25px; /* Increased gap */
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.contact-info a {
+    display: inline-flex; /* Use inline-flex for better alignment */
+    align-items: center;
+    gap: 8px; /* Increased gap */
+}
+
+.contact-info a i {
+    font-size: 1.1rem;
+}
+
+/* Section Specific Components */
+
+/* Experience */
+.experience-item {
+    margin-bottom: 30px;
+    padding-bottom: 25px; /* Adjusted padding */
+    border-bottom: 1px solid;
+}
+
+.experience-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline; /* Align baseline */
+    margin-bottom: 8px; /* Reduced margin */
+    flex-wrap: wrap; /* Allow wrap on small screens */
+    gap: 10px;
+}
+
+.company, .tech-stack, .institution {
+    margin-bottom: 8px; /* Reduced margin */
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.experience-item ul {
+    padding-left: 25px; /* Adjusted padding */
+}
+
+/* Projects */
+.project-item {
+    margin-bottom: 30px; /* Increased margin */
+    padding-bottom: 30px;
+    border-bottom: 1px solid;
+}
+
+.project-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.project-tech {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.project-item p {
+    margin-bottom: 15px;
+}
+
+.project-links {
+    margin-top: 10px;
+}
+
+.project-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-right: 15px;
+}
+
+/* Skills */
+.skill-category h3 {
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.skill-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Increased gap */
+}
+
+.skill-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.skill-name {
+    font-size: 0.95rem; /* Slightly larger */
+    font-weight: 500;
+}
+
+.progress-bar {
+    height: 10px; /* Thicker progress bar */
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    border-radius: 5px;
+}
+
+/* Education */
+.education-item {
+    margin-bottom: 25px;
+}
+
+.education-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.education-item p {
+    margin-top: 5px;
+}
+
+/* Resume Button */
+.resume-download {
+    text-align: center;
+    margin: 30px 0; /* Increased margin */
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 28px;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    font-size: 1rem;
+    font-weight: 500;
+    color: white; /* Ensure text is white */
+    border: none;
+}
+
+.download-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px var(--shadow-color);
+} 

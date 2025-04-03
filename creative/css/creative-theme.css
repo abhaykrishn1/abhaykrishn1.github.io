@@ -1,0 +1,125 @@
+/* Creative Theme Specific Styles */
+
+/* Override base themes */
+body.theme-default {
+    /* Cyberpunk/Neon Palette */
+    --primary-color: #00ffff; /* Cyan */
+    --secondary-color: #ff00ff; /* Magenta */
+    --background-color: #0d0d0d; /* Near Black */
+    --text-color: #e0e0e0;       /* Light Gray */
+    --accent-color: #ffff00;    /* Yellow */
+    --section-bg-color: rgba(18, 18, 18, 0.85); /* Darker Transparent Gray */
+    --shadow-color: rgba(0, 255, 255, 0.4); /* Brighter Cyan Shadow */
+    --border-glow-color: rgba(255, 0, 255, 0.5); /* Magenta glow */
+}
+
+/* General Creative Adjustments */
+body {
+    font-family: 'Consolas', 'Monaco', monospace;
+    background-color: var(--background-color); /* Ensure body bg is set */
+}
+
+#creative-canvas {
+    /* Simple Grid Background */
+    background-image: 
+        linear-gradient(to right, rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px; /* Size of grid squares */
+    background-color: var(--background-color);
+    position: fixed; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    z-index: -1;
+}
+
+h1, h2, h3 {
+    text-shadow: 0 0 6px var(--primary-color), 0 0 12px var(--secondary-color), 0 0 2px black; /* Enhanced glow */
+}
+
+h1 { color: var(--primary-color); font-size: 2.8rem; }
+h2 { color: var(--secondary-color); font-size: 1.8rem;}
+h3 { color: var(--accent-color); font-size: 1.3rem;}
+
+.section {
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 0 8px var(--shadow-color), 0 0 15px var(--border-glow-color) inset;
+    backdrop-filter: blur(6px); /* Slightly more blur */
+    border-radius: 0;
+    margin-bottom: 50px; /* More spacing */
+    background-color: var(--section-bg-color); /* Need this for backdrop filter */
+}
+
+.theme-icon {
+    background: var(--section-bg-color);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.theme-icon.active-theme {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    box-shadow: 0 0 12px var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.theme-icon:hover {
+     border-color: var(--secondary-color);
+     color: var(--secondary-color);
+     box-shadow: 0 0 12px var(--secondary-color);
+     transform: scale(1.1);
+}
+
+.certification-badge {
+    background: var(--secondary-color);
+    color: var(--background-color);
+    text-shadow: 0 0 3px #000;
+    border: 1px solid var(--secondary-color);
+    box-shadow: 0 0 5px var(--secondary-color);
+}
+
+.progress {
+     background-color: var(--primary-color);
+     box-shadow: 0 0 5px var(--primary-color) inset; /* Inner glow */
+     border-radius: 0;
+     height: 10px;
+}
+
+.progress-bar {
+    background-color: rgba(0, 0, 0, 0.4); /* Darker background */
+    border-radius: 0;
+    height: 10px;
+}
+
+a, .contact-info a, .project-links a {
+    color: var(--primary-color);
+    text-shadow: 0 0 3px var(--primary-color);
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+a:hover, .contact-info a:hover, .project-links a:hover {
+    color: var(--accent-color);
+    text-shadow: 0 0 5px var(--accent-color);
+}
+
+.download-btn {
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    border: 1px solid var(--accent-color);
+    text-shadow: none;
+    box-shadow: 0 0 8px var(--accent-color);
+    transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 12px var(--primary-color);
+    color: var(--background-color);
+    transform: scale(1.05);
+}
+
+/* Hide color options */
+#minimalist-icon .color-options {
+    display: none !important;
+} 

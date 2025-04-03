@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #0a0a0a;
+      overflow: hidden;
+      perspective: 1000px;
+    }
+
+    .scene {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      transform-style: preserve-3d;
+    }
+
+    .text-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+
+    .letter {
+      display: inline-block;
+      font-family: 'Arial Black', sans-serif;
+      font-size: 120px;
+      font-weight: bold;
+      color: transparent;
+      -webkit-text-stroke: 2px #333;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .letter.active {
+      color: #0ff;
+      -webkit-text-stroke: 2px #0ff;
+      text-shadow: 
+        0 0 5px #0ff,
+        0 0 10px #0ff,
+        0 0 20px #0ff;
+    }
+
+    .moving-light {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, #0ff 0%, rgba(0,255,255,0) 70%);
+      border-radius: 50%;
+      filter: blur(5px);
+      mix-blend-mode: screen;
+      z-index: 3;
+    }
+
+    .wireframe-cube {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      transform-style: preserve-3d;
+      animation: rotate 20s infinite linear;
+    }
+
+    .wireframe-cube .edge {
+      position: absolute;
+      background: #1a1a1a;
+      transition: all 0.3s ease;
+    }
+
+    .wireframe-cube .edge.horizontal {
+      width: 100%;
+      height: 2px;
+    }
+
+    .wireframe-cube .edge.vertical {
+      width: 2px;
+      height: 100%;
+    }
+
+    .wireframe-cube.active .edge {
+      background: #0ff;
+      box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotateX(0) rotateY(0) rotateZ(0);
+      }
+      to {
+        transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div class="text-container">
+      <span class="letter">A</span>
+      <span class="letter">B</span>
+      <span class="letter">H</span>
+      <span class="letter">A</span>
+      <span class="letter">Y</span>
+    </div>
+    <div class="moving-light"></div>
+  </div>
+
+  <script>
+    const scene = document.querySelector('.scene');
+    const letters = document.querySelectorAll('.letter');
+    const light = document.querySelector('.moving-light');
+    const cubes = [];
+
+    // Create wireframe cube
+    function createWireframeCube(x, y, size, rotationDelay) {
+      const cube = document.createElement('div');
+      cube.className = 'wireframe-cube';
+      cube.style.left = x + 'px';
+      cube.style.top = y + 'px';
+      cube.style.width = size + 'px';
+      cube.style.height = size + 'px';
+      cube.style.animationDelay = -rotationDelay + 's';
+
+      // Create edges
+      const edges = [];
+      // Front face
+      edges.push(createEdge(0, 0, 'horizontal'));
+      edges.push(createEdge(0, size, 'horizontal'));
+      edges.push(createEdge(0, 0, 'vertical'));
+      edges.push(createEdge(size, 0, 'vertical'));
+
+      // Back face (transformed)
+      const backFace = document.createElement('div');
+      backFace.style.transform = `translateZ(${-size}px)`;
+      backFace.style.position = 'absolute';
+      backFace.appendChild(createEdge(0, 0, 'horizontal'));
+      backFace.appendChild(createEdge(0, size, 'horizontal'));
+      backFace.appendChild(createEdge(0, 0, 'vertical'));
+      backFace.appendChild(createEdge(size, 0, 'vertical'));
+
+      // Connecting edges
+      const connectingEdges = document.createElement('div');
+      connectingEdges.appendChild(createEdge(0, 0, 'vertical', -size));
+      connectingEdges.appendChild(createEdge(size, 0, 'vertical', -size));
+      connectingEdges.appendChild(createEdge(0, size, 'vertical', -size));
+      connectingEdges.appendChild(createEdge(size, size, 'vertical', -size));
+
+      edges.forEach(edge => cube.appendChild(edge));
+      cube.appendChild(backFace);
+      cube.appendChild(connectingEdges);
+
+      scene.appendChild(cube);
+      cubes.push(cube);
+    }
+
+    function createEdge(x, y, type, z = 0) {
+      const edge = document.createElement('div');
+      edge.className = `edge ${type}`;
+      edge.style.left = x + 'px';
+      edge.style.top = y + 'px';
+      if (z) edge.style.transform = `translateZ(${z}px)`;
+      return edge;
+    }
+
+    // Create multiple cubes
+    for (let i = 0; i < 15; i++) {
+      const size = Math.random() * 60 + 40;
+      const x = Math.random() * (window.innerWidth - size);
+      const y = Math.random() * (window.innerHeight - size);
+      const delay = Math.random() * 20;
+      createWireframeCube(x, y, size, delay);
+    }
+
+    // Animate light movement
+    let phase = 0;
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+
+    function animate() {
+      // Move light in a complex pattern
+      phase += 0.02;
+      const radius = 100;
+      const x = centerX + Math.cos(phase) * radius * 2;
+      const y = centerY + Math.sin(phase * 2) * radius;
+
+      light.style.left = x + 'px';
+      light.style.top = y + 'px';
+
+      // Check letters proximity
+      letters.forEach(letter => {
+        const rect = letter.getBoundingClientRect();
+        const letterCenter = {
+          x: rect.left + rect.width / 2,
+          y: rect.top + rect.height / 2
+        };
+        const distance = Math.hypot(x - letterCenter.x, y - letterCenter.y);
+        letter.classList.toggle('active', distance < 100);
+      });
+
+      // Check cubes proximity
+      cubes.forEach(cube => {
+        const rect = cube.getBoundingClientRect();
+        const cubeCenter = {
+          x: rect.left + rect.width / 2,
+          y: rect.top + rect.height / 2
+        };
+        const distance = Math.hypot(x - cubeCenter.x, y - cubeCenter.y);
+        cube.classList.toggle('active', distance < 150);
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    // Add mouse interaction
+    document.addEventListener('mousemove', (e) => {
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+
+      // Slightly adjust cube rotations based on mouse position
+      cubes.forEach(cube => {
+        const rect = cube.getBoundingClientRect();
+        const cubeCenter = {
+          x: rect.left + rect.width / 2,
+          y: rect.top + rect.height / 2
+        };
+        const angleX = (mouseY - cubeCenter.y) * 0.1;
+        const angleY = (mouseX - cubeCenter.x) * 0.1;
+        cube.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #0a0a0a;
+      overflow: hidden;
+      perspective: 1500px;
+    }
+
+    .scene {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      transform-style: preserve-3d;
+    }
+
+    .text-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+
+    .letter {
+      display: inline-block;
+      font-family: 'Arial Black', sans-serif;
+      font-size: 120px;
+      font-weight: bold;
+      color: transparent;
+      -webkit-text-stroke: 2px #333;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .letter::before {
+      content: attr(data-letter);
+      position: absolute;
+      color: #0ff;
+      -webkit-text-stroke: 0;
+      top: 0;
+      left: 0;
+      clip-path: polygon(0 100%, 0 100%, 0 100%);
+      transition: color 0.3s;
+      filter: blur(1px);
+    }
+
+    .letter.filling::before {
+      animation: fillLetter 1.5s ease forwards;
+    }
+
+    .letter.active::before {
+      text-shadow: 
+        0 0 5px #0ff,
+        0 0 10px #0ff,
+        0 0 20px #0ff;
+    }
+
+    @keyframes fillLetter {
+      0% {
+        clip-path: polygon(0 100%, 0 100%, 0 100%);
+      }
+      100% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      }
+    }
+
+    .moving-light {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: radial-gradient(circle, #0ff 0%, rgba(0,255,255,0) 70%);
+      border-radius: 50%;
+      filter: blur(8px);
+      mix-blend-mode: screen;
+      z-index: 3;
+    }
+
+    .geometric-shape {
+      position: absolute;
+      transform-style: preserve-3d;
+    }
+
+    .wireframe {
+      position: absolute;
+      border: 2px solid #1a1a1a;
+      transition: all 0.5s ease;
+    }
+
+    .wireframe.active {
+      border-color: #0ff;
+      box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+    }
+
+    .spiral {
+      border: none;
+      border-left: 2px solid #1a1a1a;
+      border-radius: 50%;
+      transition: all 0.5s ease;
+    }
+
+    .hexagon {
+      width: 100px;
+      height: 57.735px;
+      position: relative;
+    }
+
+    .hexagon::before,
+    .hexagon::after {
+      content: '';
+      position: absolute;
+      border: 2px solid #1a1a1a;
+      width: inherit;
+      height: inherit;
+      transform-origin: center;
+      transition: all 0.5s ease;
+    }
+
+    .hexagon::before {
+      transform: rotate(60deg);
+    }
+
+    .hexagon::after {
+      transform: rotate(-60deg);
+    }
+
+    .hexagon.active,
+    .hexagon.active::before,
+    .hexagon.active::after {
+      border-color: #0ff;
+      box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotateX(0) rotateY(0);
+      }
+      50% {
+        transform: translateY(-20px) rotateX(180deg) rotateY(180deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div class="text-container">
+      <span class="letter" data-letter="A">A</span>
+      <span class="letter" data-letter="B">B</span>
+      <span class="letter" data-letter="H">H</span>
+      <span class="letter" data-letter="A">A</span>
+      <span class="letter" data-letter="Y">Y</span>
+    </div>
+    <div class="moving-light"></div>
+  </div>
+
+  <script>
+    const scene = document.querySelector('.scene');
+    const letters = document.querySelectorAll('.letter');
+    const light = document.querySelector('.moving-light');
+    const shapes = [];
+
+    // Create different geometric shapes
+    function createShape(type, x, y, size) {
+      const shape = document.createElement('div');
+      shape.className = `geometric-shape ${type}`;
+      shape.style.left = x + 'px';
+      shape.style.top = y + 'px';
+
+      switch(type) {
+        case 'cube':
+          createWireframeCube(shape, size);
+          break;
+        case 'spiral':
+          createSpiral(shape, size);
+          break;
+        case 'hexagon':
+          shape.className += ' hexagon';
+          shape.style.width = size + 'px';
+          shape.style.height = (size * 0.866) + 'px';
+          break;
+      }
+
+      shape.style.animation = `float ${8 + Math.random() * 4}s ease-in-out infinite`;
+      shape.style.animationDelay = `-${Math.random() * 5}s`;
+      
+      scene.appendChild(shape);
+      shapes.push(shape);
+    }
+
+    function createWireframeCube(container, size) {
+      const faces = [
+        { transform: 'translateZ(' + (size/2) + 'px)' },
+        { transform: 'translateZ(' + (-size/2) + 'px)' },
+        { transform: 'rotateY(90deg) translateZ(' + (size/2) + 'px)' },
+        { transform: 'rotateY(-90deg) translateZ(' + (size/2) + 'px)' },
+        { transform: 'rotateX(90deg) translateZ(' + (size/2) + 'px)' },
+        { transform: 'rotateX(-90deg) translateZ(' + (size/2) + 'px)' }
+      ];
+
+      faces.forEach(face => {
+        const el = document.createElement('div');
+        el.className = 'wireframe';
+        el.style.width = size + 'px';
+        el.style.height = size + 'px';
+        el.style.transform = face.transform;
+        el.style.position = 'absolute';
+        container.appendChild(el);
+      });
+    }
+
+    function createSpiral(container, size) {
+      for (let i = 0; i < 360; i += 30) {
+        const spiral = document.createElement('div');
+        spiral.className = 'wireframe spiral';
+        spiral.style.width = size * (1 - i/360) + 'px';
+        spiral.style.height = size * (1 - i/360) + 'px';
+        spiral.style.transform = `rotate(${i}deg) translateZ(${i}px)`;
+        container.appendChild(spiral);
+      }
+    }
+
+    // Create various shapes
+    for (let i = 0; i < 20; i++) {
+      const size = Math.random() * 60 + 40;
+      const x = Math.random() * (window.innerWidth - size);
+      const y = Math.random() * (window.innerHeight - size);
+      const types = ['cube', 'spiral', 'hexagon'];
+      createShape(types[Math.floor(Math.random() * types.length)], x, y, size);
+    }
+
+    // Sequential letter filling animation
+    function startLetterAnimation() {
+      letters.forEach((letter, index) => {
+        setTimeout(() => {
+          letter.classList.add('filling');
+        }, index * 300);
+      });
+    }
+
+    // Start the animation after a short delay
+    setTimeout(startLetterAnimation, 1000);
+
+    // Complex light movement
+    let time = 0;
+    let lightPath = [];
+    const pathLength = 50;
+
+    function animate() {
+      time += 0.02;
+      
+      // Complex parametric movement
+      const x = window.innerWidth/2 + 
+               Math.cos(time) * 100 + 
+               Math.sin(time * 2.5) * 50;
+      const y = window.innerHeight/2 + 
+               Math.sin(time) * 100 + 
+               Math.cos(time * 2) * 50;
+
+      // Update light trail
+      lightPath.push({x, y});
+      if (lightPath.length > pathLength) lightPath.shift();
+
+      // Update light position
+      light.style.left = x + 'px';
+      light.style.top = y + 'px';
+
+      // Check proximity for letters and shapes
+      const checkProximity = (element, threshold) => {
+        const rect = element.getBoundingClientRect();
+        const centerX = rect.left + rect.width/2;
+        const centerY = rect.top + rect.height/2;
+        return Math.hypot(x - centerX, y - centerY) < threshold;
+      };
+
+      letters.forEach(letter => {
+        const isClose = checkProximity(letter, 150);
+        letter.classList.toggle('active', isClose);
+      });
+
+      shapes.forEach(shape => {
+        const isClose = checkProximity(shape, 200);
+        shape.classList.toggle('active', isClose);
+        if (shape.children.length) {
+          Array.from(shape.children).forEach(child => {
+            child.classList.toggle('active', isClose);
+          });
+        }
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    // Mouse interaction
+    let mouseX = 0, mouseY = 0;
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      
+      shapes.forEach(shape => {
+        const rect = shape.getBoundingClientRect();
+        const dx = mouseX - (rect.left + rect.width/2);
+        const dy = mouseY - (rect.top + rect.height/2);
+        const distance = Math.hypot(dx, dy);
+        const angle = Math.atan2(dy, dx);
+        
+        if (distance < 300) {
+          const force = (1 - distance/300) * 20;
+          shape.style.transform = `translate(${Math.cos(angle) * force}px, ${Math.sin(angle) * force}px)`;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

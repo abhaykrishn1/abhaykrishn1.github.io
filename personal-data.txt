@@ -1,0 +1,87 @@
+Abhay Krishna
+Phone: 8765204921
+Email: abhaykrishn1@gmail.com
+LinkedIn: linkedin.com/in/abhaykrishn1
+GitHub: github.com/abhaykrishn1
+
+PROFESSIONAL SUMMARY
+Innovative AI Engineer with a proven track record of designing and deploying advanced AI systems. Adept at building multi-agent systems, developing robust ETL pipelines, and implementing state-of-the-art chatbots using cutting-edge technologies. Known for driving operational efficiency and delivering cost savings while ensuring seamless integration and data integrity. Demonstrated expertise in FastAPI, Snowflake, MongoDB, and cloud platforms with a focus on scalable, secure, and user-friendly solutions.
+
+CORE COMPETENCIES
+AI & Machine Learning: LangChain, OpenAI, Gemini, CortexAI, Deepgram
+
+Backend & API Development: FastAPI, Django, Flask, Spring Boot
+
+Database & Data Engineering: Snowflake, MongoDB, Vector Databases, MySQL
+
+ETL & Data Integration: API integrations, data transformation, AWS S3
+
+DevOps & Containerization: Docker, RabbitMQ, Linux (Ubuntu 24.04)
+
+Collaboration & Agile Methodologies: Git, Agile/Scrum, documentation, stakeholder presentations
+
+PROFESSIONAL EXPERIENCE
+64-Squares LLC, Pune
+AI Engineer
+April 2024 – Present
+
+Engineered a multi-AI agent system for a sales team, enabling automated, persuasive car pitch emails that increased lead conversion rates.
+
+Developed a FastAPI-based service using LangChain and Snowflake, reducing data processing time by 35% and saving an estimated 20% in operational costs.
+
+Designed and executed an ETL pipeline that extracted, cleansed, and loaded data from external APIs into Snowflake—streamlining data workflows and reducing manual intervention by 40%.
+
+Integrated third-party APIs (OpenAI, Gemini, CortexAI) to build a RAG (Retrieval-Augmented Generation) chatbot, enhancing customer engagement and reducing support query turnaround by 25%.
+
+Implemented a voice assistant using Deepgram, which improved accessibility and user experience across platforms.
+
+SafeRxp.com
+Software Engineer
+
+Resolved dependency conflicts in Python 3.6 projects, ensuring reliable performance and reducing troubleshooting time by 50%.
+
+Configured and maintained Ubuntu 24.04 local development environments via Docker, which improved build efficiency and consistency across teams.
+
+Delivered technical presentations on Agile methodologies, resulting in the streamlined adoption of best practices and enhanced team collaboration.
+
+PROJECT HIGHLIGHTS
+GR-MART (CDAC & Sunbeam Karad)
+Full Stack Developer | Sept 2023
+
+Spearheaded development of a secure and efficient web application for grocery purchases, boosting user engagement by 30% within the first quarter.
+
+Utilized Spring Boot, React.js, MySQL, and AWS EC2 to create a resilient system with integrated Spring Security.
+
+Documented processes using Git, Postman, Figma, and draw.io to produce comprehensive ER and Use Case diagrams, facilitating seamless project handover.
+
+U-Test Freelance
+Quality Assurance Tester | Jan 2023 (Remote)
+
+Conducted exploratory prompt testing for the Bard AI model (now Gemini), ensuring safety, security, and fairness across user interactions.
+
+Documented testing procedures and results to inform iterative improvements and guarantee responsible AI standards.
+
+CERTIFICATIONS
+SnowPro Core Data Engineer – Snowflake, September 2024
+
+Building GenAI Applications with MongoDB – MongoDB Badge
+
+Introduction to LangGraph – LangChain Academy
+
+TECHNICAL SKILLS
+Programming Languages: Python, Java, JavaScript
+
+Frameworks & Tools: FastAPI, Django, Flask, Spring Boot, React.js, Docker
+
+Databases: Snowflake, MongoDB, MySQL, Vector Databases
+
+Platforms: AWS, Ubuntu, Git, RabbitMQ
+
+Other: API integration, ETL pipeline design, Agile methodologies, technical documentation
+
+ADDITIONAL INFORMATION
+Proven ability to reduce operational costs through innovative technical solutions.
+
+Consistently exceed project benchmarks by optimizing system architectures and processes.
+
+Excellent communication skills with a knack for technical presentations and cross-functional collaboration.
